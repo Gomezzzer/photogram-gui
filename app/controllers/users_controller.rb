@@ -9,11 +9,16 @@ class UsersController < ApplicationController
 
   def show
     # Parameters: {"path_username"=>"ansia"}
-  url_username = params.fetch("path_username")
+     url_username = params.fetch("path_username")
 
-     User.where({ :username =  url_username })
+     matching_usernames =  User.where({ :username =>  url_username })
 
-    render({ :template => "user_templates/show.html.erb" })
+     @the_user = matching_usernames.first
+
+     
+     
+
+     render({ :template => "user_templates/show.html.erb" })
   
   end
 end

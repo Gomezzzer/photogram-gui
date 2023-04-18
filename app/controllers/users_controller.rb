@@ -16,9 +16,19 @@ class UsersController < ApplicationController
      @the_user = matching_usernames.first
 
      
-     
 
      render({ :template => "user_templates/show.html.erb" })
   
+  end
+
+    def user
+
+      render({ :template => "user_templates/user.html.erb" }) 
+  end
+
+  def update
+  
+
+    render({ :template => "user_templates/update_user.html.erb" }) 
   end
 end

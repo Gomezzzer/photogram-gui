@@ -35,4 +35,10 @@ class PhotosController < ApplicationController
      redirect_to("/photos")
    end
 
+   def create
+
+
+      render({ :template => "photo_templates/create.html.erb" })
+   end
+
 end

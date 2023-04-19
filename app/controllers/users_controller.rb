@@ -21,14 +21,30 @@ class UsersController < ApplicationController
   
   end
 
-    def user
-
-      render({ :template => "user_templates/user.html.erb" }) 
+  def create
+    # Parameters: {"input_username"=>"ygigu", "username"=>"insert_user_record"}
+    input_username = params.fetch("input_username")
+    a_new_user = User.new
+    a_new_user.username = input_username
+    a_new_user.save
+  # render({:template=>"user_templates/add_user.html.erb"})
+  redirect_to("/users/#{a_new_user.username}")
   end
 
   def update
-  
+    the_user = params.fetch("modify_user")
+    matching_user = User.where({:username=>the_user})
+    current_user = matching_user.at(0)
+    
+    input_user = params.fetch("input_username")
 
-    render({ :template => "user_templates/update_user.html.erb" }) 
+    current_user.username = input_user
+
+    current_user.save
+
+
+    redirect_to("/users/#{current_user.username}")
+
+  #  render({ :template => "user_templates/update_user.html.erb" }) 
   end
 end

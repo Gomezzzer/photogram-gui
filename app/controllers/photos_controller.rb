@@ -82,5 +82,10 @@ class PhotosController < ApplicationController
    redirect_to(next_url) 
    end
 
+   def comment
+    
+
+      render({ :template => "photo_templates/index.html.erb" })
+    end
 
 end 

@@ -48,4 +48,9 @@ class UsersController < ApplicationController
 
     render({ :template => "user_templates/update_user.html.erb" }) 
   end
+
+  def modify_user
+  
+    redirect_to("/users")
+  end
 end

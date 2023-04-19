@@ -85,18 +85,18 @@ class PhotosController < ApplicationController
    def comment
       input_body = params.fetch("input_body")
       input_author_id = params.fetch("input_author_id")
-      input_photo_id = params.fetch("input_photo_id")#_photo_
+      input_photo_id = params.fetch("input_photo_id") 
 
       a_new_comment = Comment.new
       a_new_comment.author_id = input_author_id
       a_new_comment.body = input_body
-      a_new_comment.photo_id = input_photo_id  #right here add _photo_
+      a_new_comment.photo_id = input_photo_id 
       a_new_comment.save 
 
-      render({ :template => "photo_templates/show.html.erb" })
+   #   render({ :template => "photo_templates/show.html.erb" })
+
+      redirect_to("/photos/" + a_new_comment.id.to_s)
     end
 
-    def update_user
-  
-    end
+    
 end 

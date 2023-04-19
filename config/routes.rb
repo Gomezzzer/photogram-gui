@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
+ get("/", { :controller => "users", :action => "index" })
+
  get("/users", { :controller => "users", :action => "index" })
 
  get("/users/:path_username", { :controller => "users", :action => "show" })
+
+ get("/update_user", { :controller => "users", :action => "update" })
+
+ get("/update_user/:modify_user", { :controller => "users", :action => "update" })
 
  get("/photos", { :controller => "photos", :action => "index" })
 
@@ -16,8 +22,8 @@ Rails.application.routes.draw do
 
  get("/insert_user_record", { :controller => "users", :action => "create" })
 
+ get("/insert_comment_record", { :controller => "photos", :action => "comment" })
+
  
-
-
 
 end

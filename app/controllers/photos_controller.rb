@@ -54,7 +54,7 @@ class PhotosController < ApplicationController
 
     redirect_to("/photos/" + a_new_photo.id.to_s)
 
-    redirect_to(next_url)
+   # redirect_to(next_url)
    end
 
    def update
@@ -79,13 +79,24 @@ class PhotosController < ApplicationController
 
    redirect_to("/photos/" + the_photo.id.to_s)
 
-   redirect_to(next_url) 
+  # redirect_to(next_url) 
    end
 
    def comment
-    
+      input_body = params.fetch("input_body")
+      input_author_id = params.fetch("input_author_id")
+      input_photo_id = params.fetch("input_photo_id")#_photo_
 
-      render({ :template => "photo_templates/index.html.erb" })
+      a_new_comment = Comment.new
+      a_new_comment.author_id = input_author_id
+      a_new_comment.body = input_body
+      a_new_comment.photo_id = input_photo_id  #right here add _photo_
+      a_new_comment.save 
+
+      render({ :template => "photo_templates/show.html.erb" })
     end
 
+    def update_user
+  
+    end
 end 
